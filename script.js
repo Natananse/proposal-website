@@ -2,7 +2,7 @@
    1) TYPEWRITER EFFECT
    Types the proposal text one character at a time into #typedText
 ========================================================= */
-const message = "Will you marry me?";
+const message = "Will you marry me Hiwetae?";
 const typedEl = document.getElementById('typedText');
 let i = 0;
 

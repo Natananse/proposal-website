@@ -1,0 +1,150 @@
+/* ---------- DESIGN TOKENS ---------- */
+:root {
+  --ink: #2e1f2e;          /* deep plum-black, main text */
+  --dusk: #3d2b4f;         /* twilight purple background */
+  --dusk-deep: #24162f;    /* darker twilight for gradient */
+  --blush: #f4d3d8;        /* soft blush for text on dark */
+  --gold: #d8a84e;         /* warm candlelight gold, the accent */
+  --rose: #e4899a;         /* muted rose for hearts */
+  --paper: #fbf3ea;        /* card background */
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at top, var(--dusk) 0%, var(--dusk-deep) 70%);
+  font-family: 'Georgia', 'Iowan Old Style', serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ---------- AMBIENT STARFIELD ---------- */
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+.star {
+  position: absolute;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: twinkle 3s ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.9; }
+}
+
+/* ---------- MAIN CARD ---------- */
+.card {
+  position: relative;
+  z-index: 2;
+  background: var(--paper);
+  border-radius: 18px;
+  padding: 56px 44px;
+  max-width: 480px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  border: 1px solid rgba(216, 168, 78, 0.3);
+}
+
+.eyebrow {
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: var(--rose);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: 30px;
+  color: var(--ink);
+  line-height: 1.4;
+  min-height: 130px; /* reserve space so layout doesn't jump during typing */
+  margin: 0 0 34px 0;
+}
+
+/* typewriter cursor */
+.cursor {
+  display: inline-block;
+  width: 2px;
+  background: var(--gold);
+  margin-left: 2px;
+  animation: blink 0.8s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ---------- BUTTONS ---------- */
+.btn-row {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  height: 60px;
+  align-items: center;
+}
+
+button {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+#yesBtn {
+  background: var(--gold);
+  color: var(--ink);
+}
+#yesBtn:hover { transform: scale(1.06); }
+
+#noBtn {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+  position: absolute; /* lets us move it freely when it "runs away" */
+}
+
+/* ---------- CELEBRATION SCREEN ---------- */
+.celebrate {
+  display: none;
+}
+.celebrate.show {
+  display: block;
+}
+.celebrate h1 { min-height: auto; margin-bottom: 8px; }
+.celebrate p {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: var(--rose);
+  font-size: 14px;
+}
+
+/* ---------- FLOATING HEARTS ---------- */
+.heart {
+  position: fixed;
+  bottom: -40px;
+  font-size: 22px;
+  color: var(--rose);
+  pointer-events: none;
+  animation: rise linear forwards;
+  z-index: 3;
+}
+@keyframes rise {
+  to { transform: translateY(-110vh) rotate(20deg); opacity: 0; }
+}
+
+/* respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .star, .heart, .cursor { animation: none !important; }
+}
