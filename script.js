@@ -2,7 +2,7 @@
    1) TYPEWRITER EFFECT
    Types the proposal text one character at a time into #typedText
 ========================================================= */
-const message = "Will you marry me Hiwetae?";
+const message = "Will you marry me hiwetae?";
 const typedEl = document.getElementById('typedText');
 let i = 0;
 
@@ -73,18 +73,24 @@ function startHearts() {
 }
 
 /* =========================================================
-   4) AMBIENT STAR BACKGROUND
-   Generates a handful of small twinkling dots behind the card.
+   4) AMBIENT BACKGROUND PARTICLES
+   Generates small hearts and dots that drift slowly upward
+   behind the card, always running (not just after clicking Yes).
 ========================================================= */
 const starsContainer = document.getElementById('stars');
-for (let s = 0; s < 40; s++) {
-  const star = document.createElement('div');
-  star.className = 'star';
-  const size = Math.random() * 2 + 1;
-  star.style.width = size + 'px';
-  star.style.height = size + 'px';
-  star.style.left = Math.random() * 100 + 'vw';
-  star.style.top = Math.random() * 100 + 'vh';
-  star.style.animationDelay = Math.random() * 3 + 's';
-  starsContainer.appendChild(star);
+const particleCount = 28;
+
+for (let s = 0; s < particleCount; s++) {
+  const particle = document.createElement('div');
+  const isHeart = Math.random() > 0.55; // mix of hearts and small dots
+
+  particle.className = isHeart ? 'particle heart-particle' : 'particle dot';
+  if (isHeart) particle.textContent = '♥';
+
+  particle.style.left = Math.random() * 100 + 'vw';
+  particle.style.setProperty('--drift-x', (Math.random() * 60 - 30) + 'px'); // gentle sideways sway
+  particle.style.animationDuration = (10 + Math.random() * 12) + 's';
+  particle.style.animationDelay = (Math.random() * 12) + 's';
+
+  starsContainer.appendChild(particle);
 }
