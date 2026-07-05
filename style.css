@@ -1,12 +1,12 @@
 /* ---------- DESIGN TOKENS ---------- */
 :root {
   --ink: #d1b31c;          /* deep plum-black, main text */
-  --dusk: #3d2b4f;         /* twilight purple background */
-  --dusk-deep: #24162f;    /* darker twilight for gradient */
+  --dusk: #e7a049;         /* twilight purple background */
+  --dusk-deep: #314aba;    /* darker twilight for gradient */
   --blush: #f4d3d8;        /* soft blush for text on dark */
-  --gold: #d8a84e;         /* warm candlelight gold, the accent */
-  --rose: #940a0a;         /* muted rose for hearts */
-  --paper: #60f75e;        /* card background */
+  --gold: #4f3c18;         /* warm candlelight gold, the accent */
+  --rose: #fefefe;         /* muted rose for hearts */
+  --paper: #f200be;        /* card background */
 }
 
 * { box-sizing: border-box; }
