@@ -1,6 +1,6 @@
 /* ---------- DESIGN TOKENS ---------- */
 :root {
-  --ink: #d1b31c;          /* deep plum-black, main text */
+  --ink: #fef6cd;          /* deep plum-black, main text */
   --dusk: #e7a049;         /* twilight purple background */
   --dusk-deep: #314aba;    /* darker twilight for gradient */
   --blush: #f4d3d8;        /* soft blush for text on dark */
